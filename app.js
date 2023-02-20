@@ -28,17 +28,16 @@ let duplicateRemover = (array) => {
     return new Set(array);
 }
 
-
-//FIXME: returns 'undefined' when recursived
 let randomArrayNoDuplicates = (array, number) => {
     let generatedArray = randomArray(array, number)
     if (duplicateRemover(generatedArray).size !== generatedArray.length) {
-        randomArrayNoDuplicates(array, number)
+        console.log(generatedArray);
+        return randomArrayNoDuplicates(array, number)
     } else {
         return generatedArray
     }
 }
 
-let arrayTest = ["test", 1,2,3,8,4,5,6];
+let testArray = [1,1,0,5,6,8,5,4,4,4,4,4];
 
-
+console.log("fini"+randomArrayNoDuplicates(testArray, 4));
