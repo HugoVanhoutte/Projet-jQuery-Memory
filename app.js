@@ -1,43 +1,78 @@
+//let cards = document.querySelectorAll('.card');
 let cards = $('.card');
 
-//////////////////////////////////////////////////Functions/////////////////////////////////////////////////////////////
-/**
- *
- * @param max
- * @returns {number} random number between 0 and max
- */
-let randomNumber = (max) => {
-    return Math.floor(Math.random() * max);
-}
+//Cards 1 to 16
+//Colors red, green, blue, yellow, white, black, brown, grey.
 
-/**
- *
- * @param array
- * @param number
- * @returns {*[]} array consisting of number entries from array in parameter
- */
-let randomArray = (array, number) => {
-    let generatedArray = [];
-    for (let i = 0; i < number; i++) {
-        generatedArray.push(array[randomNumber(array.length)]);
-    }
-    return generatedArray;
-}
+cards = cards.sort((a, b) => 0.5 - Math.random());
 
-let duplicateRemover = (array) => {
-    return new Set(array);
-}
+console.log(cards);
 
-let randomArrayNoDuplicates = (array, number) => {
-    let generatedArray = randomArray(array, number)
-    if (duplicateRemover(generatedArray).size !== generatedArray.length) {
-        console.log(generatedArray);
-        return randomArrayNoDuplicates(array, number)
+$.each(cards, function (index) {
+    switch (index) {
+        case 0:
+        case 1:
+            $(this).addClass('red');
+            break;
+
+        case 2:
+        case 3:
+            $(this).addClass('blue');
+            break;
+
+        case 4:
+        case 5:
+            $(this).addClass('green');
+            break;
+
+        case 6:
+        case 7:
+            $(this).addClass('yellow');
+            break;
+
+        case 8:
+        case 9:
+            $(this).addClass('white');
+            break;
+
+        case 10:
+        case 11:
+            $(this).addClass('black');
+            break;
+
+        case 12:
+        case 13:
+            $(this).addClass('brown');
+            break;
+
+        case 14:
+        case 15:
+            $(this).addClass('grey');
+            break;
+
+}})
+
+let flipped = [];
+
+cards.click(function () {
+    $(this).addClass("flipped");
+    flipped.push($(this));
+    if (flipped.length < 2){
+        //rien de spécial
     } else {
-        return generatedArray
+        //On check les classes des deux
+        if (flipped[0].attr('class') === flipped[1].attr('class')) {
+            flipped[0].off('click');
+            flipped[1].off('click');
+            flipped.pop();
+            flipped.pop();
+        } else {
+            flipped[0].delay(1000).removeClass('flipped');
+            flipped[1].delay(1000).removeClass('flipped');
+            flipped.pop();
+            flipped.pop();
+        }
     }
-}
 
-let testArray = [1,1,0,5,6,8,5,4,4,4,4,4];
+})
 
-console.log("fini"+randomArrayNoDuplicates(testArray, 4));
