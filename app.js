@@ -1,9 +1,17 @@
-//let cards = document.querySelectorAll('.card');
 let cards = $('.card');
+let startButton = $('button');
+let gameScreen = $('main').children()
 
+gameScreen.hide();
 
-cards = cards.sort((a, b) => 0.5 - Math.random());
+//Randomly sorts cards
+function arrayRandomizer(array) {
+    return array.sort((a, b) => 0.5 - Math.random());
+}
 
+//Sets colors to cards
+cardsSetter = () => {
+    arrayRandomizer(cards);
 $.each(cards, function (index) {
     switch (index) {
         case 0:
@@ -47,15 +55,16 @@ $.each(cards, function (index) {
             break;
 
 }})
+}
 
 let flipped = [];
 let score = 0;
+//TODO Timer
 
-
-
+//Function ending the game
 function gameOver() {
-    $('#end').css('display', 'block');
-    $('main').css('display', 'none');
+    gameScreen.hide()
+    $('main').text('Partie terminée en ' + timer);
 }
 
 //Cheat
@@ -65,7 +74,7 @@ document.body.addEventListener("keydown", function (event) {
     }
 })
 
-
+//Functions for when cards are clicked and getting flipped, Checks the results
 function checkCards() {
     $(this).addClass('flipped');
     $(this).off('click');
@@ -97,5 +106,9 @@ function checkCards() {
 
 }
 
+//TODO gameStart
+let gameStart = () => {
 
-cards.click(checkCards)
+}
+
+startButton.click(gameStart)

@@ -102,7 +102,7 @@ main {
 }
 
 .red.flipped {
-    background-color: red;
+    background-color: #ff2f2f;
 }
 
 .blue.flipped {
@@ -130,14 +130,12 @@ main {
 }
 
 .brown.flipped {
-    background-color: brown;
+    background-color: #702c2c;
 }
 
 #end {
-    height: 100%;
-    width: 100%;
-
-    position: fixed;
+    height: 100vw;
+    width: 100vw;
 
     background-color: white;
     display: none;
