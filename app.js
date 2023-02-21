@@ -1,12 +1,8 @@
 //let cards = document.querySelectorAll('.card');
 let cards = $('.card');
 
-//Cards 1 to 16
-//Colors red, green, blue, yellow, white, black, brown, grey.
 
 cards = cards.sort((a, b) => 0.5 - Math.random());
-
-console.log(cards);
 
 $.each(cards, function (index) {
     switch (index) {
@@ -53,26 +49,53 @@ $.each(cards, function (index) {
 }})
 
 let flipped = [];
+let score = 0;
 
-cards.click(function () {
-    $(this).addClass("flipped");
+
+
+function gameOver() {
+    $('#end').css('display', 'block');
+    $('main').css('display', 'none');
+}
+
+//Cheat
+document.body.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        gameOver();
+    }
+})
+
+
+function checkCards() {
+    $(this).addClass('flipped');
+    $(this).off('click');
     flipped.push($(this));
-    if (flipped.length < 2){
-        //rien de spécial
-    } else {
-        //On check les classes des deux
-        if (flipped[0].attr('class') === flipped[1].attr('class')) {
+
+    if (flipped.length < 2) {
+    }
+    else {
+        cards.off('click');
+        if (flipped[0].attr('class') !== flipped[1].attr('class')) {
+            setTimeout(() => {
+                flipped[0].removeClass('flipped');
+                flipped[1].removeClass('flipped');
+                flipped.splice(0,2);
+                cards.click(checkCards)
+            }, 1000)
+        } else {
+            cards.click(checkCards);
             flipped[0].off('click');
             flipped[1].off('click');
-            flipped.pop();
-            flipped.pop();
-        } else {
-            flipped[0].delay(1000).removeClass('flipped');
-            flipped[1].delay(1000).removeClass('flipped');
-            flipped.pop();
-            flipped.pop();
+            flipped.splice(0,2);
+            score++;
+
+            if (score >= 8) {
+                gameOver();
+            }
         }
     }
 
-})
+}
 
+
+cards.click(checkCards)

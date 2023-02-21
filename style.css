@@ -100,3 +100,45 @@ main {
     height: 23%;
     width: 23%;
 }
+
+.red.flipped {
+    background-color: red;
+}
+
+.blue.flipped {
+    background-color:blue;
+}
+
+.green.flipped {
+    background-color:green;
+}
+
+.yellow.flipped {
+    background-color:yellow;
+}
+
+.white.flipped {
+    background-color:white;
+}
+
+.black.flipped {
+    background-color:black;
+}
+
+.grey.flipped {
+    background-color:grey;
+}
+
+.brown.flipped {
+    background-color: brown;
+}
+
+#end {
+    height: 100%;
+    width: 100%;
+
+    position: fixed;
+
+    background-color: white;
+    display: none;
+}
