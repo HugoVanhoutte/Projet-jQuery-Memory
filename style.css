@@ -68,7 +68,7 @@ html {
 
 body{
     position: fixed;
-    background-color: var(--russian-violet);
+    background-color: var(--plum);
 }
 
 #container {
@@ -83,6 +83,25 @@ body{
 header {
     height: 25%;
     width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header button {
+    height: 5rem;
+    width: 5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10rem;
+    border: solid 0.25rem var(--russian-violet);
+
+    background-color: var(--coral-pink);
+    color: var(--russian-violet);
 }
 
 main {
@@ -99,10 +118,12 @@ main {
     background-color: var(--coral-pink);
     height: 23%;
     width: 23%;
+    border: solid 0.25rem var(--russian-violet);
+    border-radius: 2rem;
 }
 
 .red.flipped {
-    background-color: #ff2f2f;
+    background-color: red;
 }
 
 .blue.flipped {
@@ -130,13 +151,15 @@ main {
 }
 
 .brown.flipped {
-    background-color: #702c2c;
+    background-color: brown;
 }
 
 #end {
-    height: 100vw;
-    width: 100vw;
+    height: 75vh;
+    width: 75vh;
 
+    position: fixed;
+    z-index: 20;
     background-color: white;
     display: none;
 }

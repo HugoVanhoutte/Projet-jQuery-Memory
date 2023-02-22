@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9010a17673.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Memory Game</title>
 </head>
 <body>
 <div id="container"> <!-- Container ALL INSIDE -->
-    <header> <!-- Header for timer, play button etc, -->
-        <button id="playButton">Play !</button>
-        <div id="timer"></div>
+    <header> <!-- Header for score, timer, play button etc, -->
+        <button><i class="fa-solid fa-play"></i></button>
+
     </header>
     <main> <!-- main window, where the game will be played and end screen displayed -->
+        <div id="end">Partie Terminée</div>
 
         <div class="card" id="card1"></div>
         <div class="card" id="card2"></div>

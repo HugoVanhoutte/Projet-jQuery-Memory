@@ -1,70 +1,80 @@
+//let cards = document.querySelectorAll('.card');
 let cards = $('.card');
-let startButton = $('button');
-let gameScreen = $('main').children()
-
-gameScreen.hide();
-
-//Randomly sorts cards
-function arrayRandomizer(array) {
-    return array.sort((a, b) => 0.5 - Math.random());
-}
-
-//Sets colors to cards
-cardsSetter = () => {
-    arrayRandomizer(cards);
-$.each(cards, function (index) {
-    switch (index) {
-        case 0:
-        case 1:
-            $(this).addClass('red');
-            break;
-
-        case 2:
-        case 3:
-            $(this).addClass('blue');
-            break;
-
-        case 4:
-        case 5:
-            $(this).addClass('green');
-            break;
-
-        case 6:
-        case 7:
-            $(this).addClass('yellow');
-            break;
-
-        case 8:
-        case 9:
-            $(this).addClass('white');
-            break;
-
-        case 10:
-        case 11:
-            $(this).addClass('black');
-            break;
-
-        case 12:
-        case 13:
-            $(this).addClass('brown');
-            break;
-
-        case 14:
-        case 15:
-            $(this).addClass('grey');
-            break;
-
-}})
-}
-
 let flipped = [];
 let score = 0;
-//TODO Timer
+const startButton = $('button');
+let counter = 0;
 
-//Function ending the game
+//Randomize Cards
+let randomizer = (array) => {
+    return array.sort((a,b) => 0.5 - Math.random());
+}
+
+let cardSetter = () => {
+    cards = randomizer(cards);
+    $.each(cards, function (index) {
+        switch (index) {
+            case 0:
+            case 1:
+                $(this).addClass('red');
+                break;
+
+            case 2:
+            case 3:
+                $(this).addClass('blue');
+                break;
+
+            case 4:
+            case 5:
+                $(this).addClass('green');
+                break;
+
+            case 6:
+            case 7:
+                $(this).addClass('yellow');
+                break;
+
+            case 8:
+            case 9:
+                $(this).addClass('white');
+                break;
+
+            case 10:
+            case 11:
+                $(this).addClass('black');
+                break;
+
+            case 12:
+            case 13:
+                $(this).addClass('brown');
+                break;
+
+            case 14:
+            case 15:
+                $(this).addClass('grey');
+                break;
+
+        }
+    })
+}
+
+
+
+let gameStart = () => {
+    score = 0;
+    counter = 0;
+    cards.off('click')
+    $('main').children().css('display', 'flex');
+    $('main').children().removeClass('flipped blue green red yellow white black grey brown');
+    $('#end').css('display','none')
+    cardSetter();
+    cards.click(checkCards);
+}
+
 function gameOver() {
-    gameScreen.hide()
-    $('main').text('Partie terminée en ' + timer);
+    $('main').children().css('display', 'none');
+    $('#end').css('display', 'block');
+    $('#end').text(`Partie terminée en ${counter} coups`)
 }
 
 //Cheat
@@ -74,11 +84,12 @@ document.body.addEventListener("keydown", function (event) {
     }
 })
 
-//Functions for when cards are clicked and getting flipped, Checks the results
+
 function checkCards() {
     $(this).addClass('flipped');
     $(this).off('click');
     flipped.push($(this));
+    counter++;
 
     if (flipped.length < 2) {
     }
@@ -106,9 +117,6 @@ function checkCards() {
 
 }
 
-//TODO gameStart
-let gameStart = () => {
-
-}
-
-startButton.click(gameStart)
+startButton.click(function (){
+    gameStart();
+})
