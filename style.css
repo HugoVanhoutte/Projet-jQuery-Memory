@@ -72,6 +72,8 @@ body{
 }
 
 #container {
+    font-family: Calibri, sans-serif;
+
     height: 100vh;
     width: 100vw;
 
@@ -85,8 +87,13 @@ header {
     width: 100%;
 
     display: flex;
+    flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+
+    color: var(--russian-violet);
+    font-size: 3rem;
+    font-family: Calibri,sans-serif;
 }
 
 header button {
@@ -105,8 +112,8 @@ header button {
 }
 
 main {
-    height: 75vh;
-    width: 75vh;
+    height: 73vh;
+    width: 73vh;
 
     display: flex;
     flex-flow: row wrap;
@@ -123,7 +130,7 @@ main {
 }
 
 .red.flipped {
-    background-color: red;
+    background-color: orange;
 }
 
 .blue.flipped {
@@ -155,11 +162,21 @@ main {
 }
 
 #end {
-    height: 75vh;
-    width: 75vh;
+    height: 16.79vh;
+    width: 71.80vh;
 
     position: fixed;
     z-index: 20;
-    background-color: white;
+    background-color: rgba(255, 149, 140, 0.5);
+    color: var(--russian-violet);
+    border: var(--russian-violet) solid 0.25rem;
+    border-radius: 2rem;
+
+    text-align: center;
+    font-size: 3rem;
+
     display: none;
+
+    justify-content: center;
+    align-items: center;
 }
